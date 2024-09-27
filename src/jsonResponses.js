@@ -1,12 +1,22 @@
+/* There is no new code in this file that is unique to this demo.
+   This code is directly taken from the "Status Code" example.
+*/
+
 const respondJSON = (request, response, status, object) => {
-  response.writeHead(status, { 'Content-Type': 'application/json' });
-  response.write(JSON.stringify(object));
+  const content = JSON.stringify(object);
+
+  response.writeHead(status, { 
+    'Content-Type': 'application/json',
+    'Content-Length': Buffer.byteLength(content, 'utf8'),
+  });
+  
+  response.write(content);
   response.end();
 };
 
 const success = (request, response) => {
   const responseJSON = {
-    message: 'This is a successful response',
+    message: 'This is a successful response!',
   };
 
   respondJSON(request, response, 200, responseJSON);
