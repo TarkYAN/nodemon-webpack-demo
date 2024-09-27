@@ -4,15 +4,25 @@
   "description": "A simple HTTP example using status codes",
   "main": "./src/server.js",
   "scripts": {
+    "nodemon": "nodemon -e js,html,css --watch ./src --watch ./hosted ./src/server.js",
     "start": "node ./src/server.js",
     "pretest": "eslint ./src --fix",
-    "test": "echo \"Tests complete\""
+    "test": "echo \"Tests complete\"",
+    "buildBundle": "webpack",
+    "watchBundle": "webpack watch",
+    "heroku-postBuild": "webpack --mode production"
   },
   "author": "Austin Willoughby",
   "license": "ISC",
   "devDependencies": {
     "eslint": "^8.57.1",
     "eslint-config-airbnb": "^19.0.4",
-    "eslint-plugin-import": "^2.30.0"
+    "eslint-plugin-import": "^2.30.0",
+    "nodemon": "^3.1.7",
+    "webpack": "^5.95.0",
+    "webpack-cli": "^5.1.4"
+  },
+  "dependencies": {
+    "underscore": "^1.13.7"
   }
 }
